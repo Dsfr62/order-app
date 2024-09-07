@@ -16,18 +16,18 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { db } from "@/constants";
 import { formatBRL } from "@/utils/format-brl";
 import { Eye, FileText } from "lucide-react";
 import { useState } from "react";
 import { DialogOrder } from "./dialog-order";
+import { orders } from "@/db";
 
 interface TableOrdersProps {}
 
 export const TableOrders = (props: TableOrdersProps) => {
   const [search, setSearch] = useState("");
 
-  let rows = db;
+  let rows = orders;
   rows = rows.filter((row) => {
     // filter by customer or date
     return (
@@ -77,7 +77,12 @@ export const TableOrders = (props: TableOrdersProps) => {
                 <TableCell>{row.date}</TableCell>
                 <TableCell>{row.customer}</TableCell>
                 <TableCell className="text-right">
-                  {formatBRL(row.total)}
+                  {formatBRL(
+                    row.items.reduce(
+                      (acc, item) => acc + item.price * item.quantity,
+                      0
+                    )
+                  )}
                 </TableCell>
               </TableRow>
             ))}
@@ -86,7 +91,17 @@ export const TableOrders = (props: TableOrdersProps) => {
             <TableRow className="text-lg">
               <TableCell colSpan={3}></TableCell>
               <TableCell className="text-right">
-                {formatBRL(rows.reduce((acc, row) => acc + row.total, 0))}
+                {formatBRL(
+                  rows.reduce(
+                    (acc, row) =>
+                      acc +
+                      row.items.reduce(
+                        (acc, item) => acc + item.price * item.quantity,
+                        0
+                      ),
+                    0
+                  )
+                )}
               </TableCell>
             </TableRow>
           </TableFooter>

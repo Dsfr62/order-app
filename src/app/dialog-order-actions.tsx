@@ -1,10 +1,10 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
+import { IOrder } from "@/db";
 import { Download } from "lucide-react";
 
 interface DialogOrderActionsProps {
-  order: any;
+  order: IOrder;
 }
 
 export const DialogOrderActions = (props: DialogOrderActionsProps) => {

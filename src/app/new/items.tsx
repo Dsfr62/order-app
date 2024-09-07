@@ -15,12 +15,13 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { IOrderItem } from "@/db";
 import { formatBRL } from "@/utils/format-brl";
 import { Plus, Trash } from "lucide-react";
 
 interface NewItemsProps {
-  items: any[];
-  setItems: (items: any[]) => void;
+  items: IOrderItem[];
+  setItems: (items: IOrderItem[]) => void;
 }
 
 export const NewItems = (props: NewItemsProps) => {
@@ -40,6 +41,7 @@ export const NewItems = (props: NewItemsProps) => {
     props.setItems([
       ...props.items,
       {
+        id: props.items.length + 1,
         product: "Item",
         quantity: 1,
         price: 0,
@@ -49,7 +51,7 @@ export const NewItems = (props: NewItemsProps) => {
 
   const handleChange = (index: number, key: string, value: string) => {
     const newItems = [...props.items];
-    newItems[index][key] = value;
+    //TODO: fix newItems[index][key] = value;
     props.setItems(newItems);
   };
 

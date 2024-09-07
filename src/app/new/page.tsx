@@ -5,10 +5,12 @@ import Link from "next/link";
 import { useState } from "react";
 import { NewItems } from "./items";
 import { Textarea } from "@/components/ui/textarea";
+import { IOrderItem } from "@/db";
 
 export default function New() {
-  const [items, setItems] = useState<any[]>([
+  const [items, setItems] = useState<IOrderItem[]>([
     {
+      id: 1,
       product: "Teste",
       quantity: 1,
       price: 0,

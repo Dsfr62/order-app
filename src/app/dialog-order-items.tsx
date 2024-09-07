@@ -15,11 +15,12 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { IOrder } from "@/db";
 import { formatBRL } from "@/utils/format-brl";
 import { Plus, Trash } from "lucide-react";
 
 interface DialogOrderItemsProps {
-  order: any;
+  order: IOrder;
 }
 
 export const DialogOrderItems = (props: DialogOrderItemsProps) => {
@@ -40,7 +41,7 @@ export const DialogOrderItems = (props: DialogOrderItemsProps) => {
 
   const handleChange = (index: number, key: string, value: string) => {
     const newItems = [...props.order.items];
-    newItems[index][key] = value;
+    //newItems[index][key] = value;
   };
 
   return (
@@ -56,7 +57,7 @@ export const DialogOrderItems = (props: DialogOrderItemsProps) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {props.order.items.map((item: any, index: number) => (
+          {props.order.items.map((item, index) => (
             <TableRow key={index} className="">
               <TableCell>
                 <TooltipProvider>
@@ -121,8 +122,7 @@ export const DialogOrderItems = (props: DialogOrderItemsProps) => {
                   <TooltipTrigger>
                     {formatBRL(
                       props.order.items.reduce(
-                        (acc: number, item: any) =>
-                          acc + item.price * item.quantity,
+                        (acc, item) => acc + item.price * item.quantity,
                         0
                       )
                     )}

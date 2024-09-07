@@ -107,7 +107,7 @@ export const NewItems = (props: NewItemsProps) => {
                 <input
                   type="text"
                   className={inputClassName}
-                  value={formatBRL(item.price)}
+                  value={item.price}
                   onChange={(e) => handleChange(index, "price", e.target.value)}
                 />
               </TableCell>
@@ -125,7 +125,7 @@ export const NewItems = (props: NewItemsProps) => {
                 Novo
               </span>
             </TableCell>
-            <TableCell>
+            <TableCell className="text-right">
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger>

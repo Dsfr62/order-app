@@ -60,7 +60,7 @@ export const TableOrders = (props: TableOrdersProps) => {
             {rows.map((row) => (
               <TableRow key={row.id} className="text-lg">
                 <TableCell>
-                  <span className="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
                     <TooltipProvider>
                       <Tooltip>
                         <TooltipTrigger type="button">
@@ -72,7 +72,7 @@ export const TableOrders = (props: TableOrdersProps) => {
                       </Tooltip>
                     </TooltipProvider>
                     <DialogOrder order={row} />
-                  </span>
+                  </div>
                 </TableCell>
                 <TableCell>{row.date}</TableCell>
                 <TableCell>{row.customer}</TableCell>

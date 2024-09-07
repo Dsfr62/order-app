@@ -28,7 +28,7 @@ export const DialogOrder = (props: DialogOrderProps) => {
       <DialogTrigger>
         <TooltipProvider>
           <Tooltip>
-            <TooltipTrigger type="button">
+            <TooltipTrigger type="button" asChild>
               <Eye className="w-4 h-4 stroke-[1.25px] ease-linear transition-all hover:text-blue-700 cursor-pointer" />
             </TooltipTrigger>
             <TooltipContent className="w-fit text-lg">
@@ -37,7 +37,7 @@ export const DialogOrder = (props: DialogOrderProps) => {
           </Tooltip>
         </TooltipProvider>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="min-w-[90vw]">
         <DialogHeader>
           <DialogTitle>Detalhes do pedido</DialogTitle>
         </DialogHeader>

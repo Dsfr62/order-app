@@ -20,6 +20,7 @@ import { db } from "@/constants";
 import { formatBRL } from "@/utils/format-brl";
 import { Eye, FileText } from "lucide-react";
 import { useState } from "react";
+import { DialogOrder } from "./dialog-order";
 
 interface TableOrdersProps {}
 
@@ -70,16 +71,7 @@ export const TableOrders = (props: TableOrdersProps) => {
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger type="button">
-                          <Eye className="w-4 h-4 stroke-[1.25px] ease-linear transition-all hover:text-blue-700 cursor-pointer" />
-                        </TooltipTrigger>
-                        <TooltipContent className="w-fit text-lg">
-                          <p className="text-center">Ver pedido completo</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
+                    <DialogOrder order={row} />
                   </span>
                 </TableCell>
                 <TableCell>{row.date}</TableCell>
